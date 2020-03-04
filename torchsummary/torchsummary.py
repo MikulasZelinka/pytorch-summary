@@ -55,8 +55,8 @@ def summary_string(model, input_size, batch_size=-1, device=torch.device('cuda:0
     if isinstance(input_size, tuple):
         input_size = [input_size]
 
-    # batch_size of 2 for batchnorm
-    x = [torch.rand(2, *in_size).type(dtype).to(device=device)
+    # removed batch_size of 2 for batchnorm, just use in_size
+    x = [torch.rand(*in_size).type(dtype).to(device=device)
          for in_size, dtype in zip(input_size, dtypes)]
 
     # create properties
